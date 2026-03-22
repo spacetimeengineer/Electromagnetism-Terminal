@@ -1,0 +1,13 @@
+[configuration]
+entry_symbol = "charge_simulator_library_init"
+compatibility_minimum = "4.2"
+
+[libraries]
+linux.x86_64.debug = "res://addons/charge_sim_3d/bin/libcharge_sim_3d.so"
+linux.x86_64.release = "res://addons/charge_sim_3d/bin/libcharge_sim_3d.so"
+
+windows.x86_64.debug = "res://addons/charge_sim_3d/bin/charge_sim_3d.dll"
+windows.x86_64.release = "res://addons/charge_sim_3d/bin/charge_sim_3d.dll"
+
+macos.universal.debug = "res://addons/charge_sim_3d/bin/libcharge_sim_3d.dylib"
+macos.universal.release = "res://addons/charge_sim_3d/bin/libcharge_sim_3d.dylib"
