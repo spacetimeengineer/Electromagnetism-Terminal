@@ -1,0 +1,43 @@
+# SConstruct (clean + correct for your setup)
+
+import os
+from SCons.Script import DefaultEnvironment, Glob, Default
+
+env = DefaultEnvironment()
+
+platform = env.get("platform", "linux")
+target = env.get("target", "template_debug")   # template_debug / template_release
+bits = env.get("bits", "64")
+
+arch = "x86_64" if str(bits) == "64" else "x86_32"
+
+# Paths
+godot_cpp = os.path.join(os.getcwd(), "godot-cpp")
+src_dir = os.path.join(os.getcwd(), "src")
+out_dir = os.path.join(os.getcwd(), "bin")
+os.makedirs(out_dir, exist_ok=True)
+
+# Includes (need all of these for Godot 4 + godot-cpp)
+env.Append(CPPPATH=[
+    os.path.join(godot_cpp, "include"),
+    os.path.join(godot_cpp, "gen", "include"),
+    os.path.join(godot_cpp, "godot_headers"),
+    os.path.join(godot_cpp, "gdextension"),
+    src_dir,
+])
+
+# Link against godot-cpp static lib in godot-cpp/bin
+env.Append(LIBPATH=[os.path.join(godot_cpp, "bin")])
+
+# Matches: libgodot-cpp.linux.template_debug.x86_64.a  -> -lgodot-cpp.linux.template_debug.x86_64
+cpp_lib = f"godot-cpp.{platform}.{target}.{arch}"
+env.Append(LIBS=[cpp_lib])
+
+# Build shared library
+sources = Glob("src/*.cpp")
+shlib = env.SharedLibrary(
+    target=os.path.join(out_dir, "charge_sim_3d"),
+    source=sources,
+)
+
+Default(shlib)

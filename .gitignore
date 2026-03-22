@@ -1,0 +1,59 @@
+# Godot 4 generated files
+.godot/
+*.translation
+
+# Godot imports
+.import/
+
+# Compiled GDExtension binaries
+addons/*/bin/
+*.so
+*.dylib
+*.dll
+*.wasm
+*.os
+*.obj
+*.o
+*.a
+*.lib
+
+# SCons build artifacts
+.sconsign.dblite
+*.pyc
+__pycache__/
+
+# godot-cpp (keep source, ignore build outputs)
+godot-cpp/gen/
+godot-cpp/bin/
+godot-cpp/*.os
+godot-cpp/*.o
+
+# Export templates and builds
+export/
+build/
+*.pck
+*.zip
+
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+*.swp
+*.swo
+
+# IDE / editor
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Extra safety
+*.exe
+*.out
+*.bc
+*.tmp

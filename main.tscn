@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7m3rvs18nfqs"]
+
+[ext_resource type="Script" uid="uid://bbf1jvwmyijdf" path="res://addons/charge_sim_3d/src/ShipController.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://c4qmils3nvmag" path="res://addons/charge_sim_3d/src/SimHUD.gd" id="2_0xm2m"]
+
+[node name="Main" type="Node3D"]
+
+[node name="ChargeSimulator3D" type="ChargeSimulator3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Ship" type="Node3D" parent="."]
+script = ExtResource("1_0xm2m")
+
+[node name="Camera3D" type="Camera3D" parent="Ship"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 600, 600)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_0xm2m")

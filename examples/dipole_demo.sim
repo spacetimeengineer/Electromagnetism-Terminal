@@ -1,0 +1,29 @@
+# dipole_demo.sim — Current ring dipole demonstration
+# Load with: exec res://examples/dipole_demo.sim
+
+echo === Dipole Demo ===
+reset
+
+# Locked current ring at center — the main magnetic source
+ring I! 500,500,500 60 8 5.0
+
+echo Spawned locked current ring at center
+
+# Wait 0.5s then add a second ring nearby, tilted
+wait 0.5
+echo Adding tilted ring...
+ring I 500,500,650 40 8 3.0 1,0,1
+
+# Wait another second then fire some charges through
+wait 1.0
+echo Firing charges through the field...
+spawn + 500,300,500 0,200,0
+spawn - 500,300,520 0,200,0
+spawn + 500,300,480 0,200,0
+
+# After 2 more seconds, add a monopole ring
+wait 2.0
+echo Adding monopole ring...
+ring N 500,500,350 35 10 2.0 0,0,1
+
+echo === Demo loaded ===
